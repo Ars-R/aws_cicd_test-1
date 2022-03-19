@@ -63,13 +63,18 @@ variable "user_arn" {
   default = "arn:aws:iam::175016064603:user/User"
 }
 #*************************************************
-variable "enabled" {
+variable "log_enabled" {
   description = "turn ON"
   type        = string
   default     = "true"
 }
-variable "disabled" {
+variable "log_disabled" {
   description = "turn OFF"
   type        = string
   default     = "false"
+}
+variable "FullRepositoryId" {
+  description = "name of repo"
+  type        = string
+  default     = "Ars-R/html_test"
 }

@@ -73,7 +73,7 @@ resource "aws_codepipeline" "codepipeline" {
 
       configuration = {
         ConnectionArn    = aws_codestarconnections_connection.example.arn
-        FullRepositoryId = "Ars-R/html_test"
+        FullRepositoryId = "${var.FullRepositoryId}"
         BranchName       = "main"
       }
     }
@@ -292,6 +292,6 @@ resource "aws_kms_key" "s3kmskey" {
 }
 
 resource "aws_kms_alias" "s3kmskey" {
-  name          = "alias/s3kmskey-${var.owner}"
+  name          = "alias/s3bkmskey-${var.owner}"
   target_key_id = aws_kms_key.s3kmskey.id
 }
