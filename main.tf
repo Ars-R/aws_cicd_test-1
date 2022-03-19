@@ -23,7 +23,11 @@ module "iam_group_with_policies" {
   attach_iam_self_management_policy = true
 
   custom_group_policy_arns = [
-    "arn:aws:iam::aws:policy/AWSCodeCommitPowerUser",
+    "arn:aws:iam::aws:policy/AWSCodeCommitFullAccess",
+    "arn:aws:iam::aws:policy/AWSCodeDeployFullAccess",
+    "arn:aws:iam::aws:policy/AWSCodeStarFullAccess",
+    "arn:aws:iam::aws:policy/AWSCodePipelineFullAccess",
+    "arn:aws:iam::aws:policy/AWSCodeBuildDeveloperAccess"
   ]
 }
 
@@ -136,13 +140,15 @@ resource "aws_s3_bucket" "codepipeline_bucket" {
   force_destroy = true
 
   versioning {
-    enabled = var.enabled
+    enabled = var.log_disabled
   }
+
   logging {
     target_bucket = aws_s3_bucket.codepipeline_bucket_log.id
     target_prefix = "log/"
   }
 }
+
 #pipeline
 resource "aws_iam_role" "codepipeline_role" {
   name = "to-pipeline-role"

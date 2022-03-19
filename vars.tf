@@ -76,5 +76,5 @@ variable "log_disabled" {
 variable "FullRepositoryId" {
   description = "name of repo"
   type        = string
-  default     = "Ars-R/html_test"
+  default     = "https://github.com/Ars-R/html_test"
 }
